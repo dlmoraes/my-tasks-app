@@ -11,6 +11,7 @@ class TaskBoard extends Component
     {
         error_log('ok');
         $this->dispatch('notify-created', [
+            'type' => 'success',
             'msg' => 'Tudo certo! Criamos sua tarefa.'
         ]);
     }
