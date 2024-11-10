@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\CompanyEnum;
 use App\TaskStatus;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +37,16 @@ class Task extends Model
     protected $attributes = [
         "companies" => [],
     ];
+
+    public function getCompaniesAttribute($value)
+    {
+        return array_map(fn($company) => CompanyEnum::from($company), json_decode($value, true));
+    }
+
+    public function setStatusesAttribute($value)
+    {
+        $this->attributes['companies'] = json_encode($value);
+    }
 
     public function user()
     {
