@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\CompanyEnum;
 use App\Models\Service;
 use App\Models\Task;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
@@ -20,7 +21,17 @@ class CreateTaskForm extends Component
     public function save()
     {
 
-        /*$this->serviceId = $this->service->id;
+        $this->serviceId = $this->service->id;
+
+        if (!$this->service->exists()) {
+            $this->dispatch('notify-created', [
+                'type' => 'error',
+                'msg' => 'Cara, não encontramos o serviço, tente fazer do início.',
+            ]);
+
+            return redirect()->route('home');
+        }
+
 
         // Test
         $authUserId = 1;
@@ -29,14 +40,10 @@ class CreateTaskForm extends Component
             'title' => 'required|min:3',
             'description' => 'required|min:3',
             'companies' => 'required|array|min:1',
+            'serviceId' => 'required'
         ]);
 
-        $companies = [];
-
-        foreach ($this->companies as $company) {
-            error_log($company);
-            $companies[] = CompanyEnum::from($company)->value;
-        }
+        $companies = array_keys($this->companies);
 
         Task::create([
             'title' => $this->title,
@@ -44,9 +51,14 @@ class CreateTaskForm extends Component
             'companies' => $companies,
             'service_id' => $this->serviceId,
             'user_id' => $authUserId,
-        ]);*/
+        ]);
 
-        return Redirect::route('task.index')->info('Já salvei a sua tarefa!');
+        $this->dispatch('notify-created', [
+            'type' => 'success',
+            'msg' => 'Tudo certo! Criamos sua tarefa.',
+        ]);
+
+        return redirect()->route('task.index');
     }
 
     public function render()
