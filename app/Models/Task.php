@@ -22,6 +22,7 @@ class Task extends Model
         "closed_on",
         "is_accepted",
         "user_id",
+        "service_id",
     ];
 
     public function casts()
@@ -32,20 +33,6 @@ class Task extends Model
             "closed_on" => "datetime",
             "status" => TaskStatus::class,
         ];
-    }
-
-    protected $attributes = [
-        "companies" => [],
-    ];
-
-    public function getCompaniesAttribute($value)
-    {
-        return array_map(fn($company) => CompanyEnum::from($company), json_decode($value, true));
-    }
-
-    public function setStatusesAttribute($value)
-    {
-        $this->attributes['companies'] = json_encode($value);
     }
 
 
