@@ -10,11 +10,7 @@
 
 <body>
     <div class="flex flex-col min-h-screen antialiased">
-        <header class="flex items-center justify-between px-6 py-4">
-            <h1 class="text-2xl font-medium">My<span class="font-bold">Tasks</span></h1>
-
-            <x-ui.avatar srcImg='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-        </header>
+        <x-ui.header />
         <main class="flex flex-col flex-1 gap-4 p-6">
             {{ $slot }}
         </main>
