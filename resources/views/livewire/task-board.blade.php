@@ -1,6 +1,23 @@
-<div class='flex flex-col items-center flex-1 w-full gap-6 overflow-hidden'>
+<div>
 
-    <button type="button" class="btn btn-primary" wire:click='teste'>ok</button>
-
+    <div id="group-items-1">
+        <li class="group__item">
+            <h3>
+                Milk
+            </h3>
+            <a href="#">view</a><span class="remove"></span>
+        </li>
+        <li class="group__item">
+            <h3>
+                Cheese
+            </h3>
+            <a href="#">view</a><span class="remove"></span>
+        </li>
+        <li class="group__item">
+            <h3>
+                Pizza
+            </h3>
+        </li>
+    </div>
 
 </div>
