@@ -4,7 +4,7 @@
         <livewire:search-service />
 
 
-        <div class="flex justify-end w-full mt-[14rem] mr-[10rem]">
+        <div class="absolute bottom-12 right-28 max-xs:hidden">
             <x-ui.coffee />
         </div>
     </div>

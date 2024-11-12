@@ -1,7 +1,7 @@
-<div class='flex flex-col gap-4 mt-16'>
+<div class='flex flex-col gap-4 mt-16 max-sm:w-full max-xs:w-full'>
     <span class="text-xl font-semibold">Fale aí o que você quer...</span>
 
-    <div class="flex items-center justify-center w-[40rem]">
+    <div class="flex items-center justify-center w-[32rem] max-sm:w-full max-xs:w-full">
         <label class="flex items-center w-full gap-2 group input input-bordered input-primary">
             <input wire:loading.attr="disabled" wire:model='search' type="text" class="grow"
                 wire:keydown.enter="loadServices"

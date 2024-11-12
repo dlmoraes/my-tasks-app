@@ -15,6 +15,9 @@ export default {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
         },
+        screens: {
+            xs: "576px",
+        },
     },
     daisyui: {
         themes: ["night"],
