@@ -2,24 +2,28 @@
 
 namespace App\Livewire;
 
+use App\Services\TaskService;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class TaskBoard extends Component
 {
 
-    public function teste()
+    public $tasks = [];
+
+    public function mount()
     {
-        error_log('ok');
-        $this->dispatch('notify-created', [
-            'type' => 'success',
-            'msg' => 'Tudo certo! Criamos sua tarefa.'
-        ]);
+        if (Auth::check()) {
+            $authUser = Auth::user();
+        } else {
+            return redirect()->route('home');
+        }
+
+        $this->tasks = (new TaskService())->myTasks($authUser->id);
     }
 
     public function render()
     {
-
-
         return view('livewire.task-board');
     }
 }
