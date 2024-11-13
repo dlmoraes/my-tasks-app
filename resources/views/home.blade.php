@@ -8,4 +8,5 @@
             <x-ui.coffee />
         </div>
     </div>
+
 </x-layouts.app>
