@@ -13,9 +13,6 @@ class TaskBoardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // Simulating authentication for demonstration purposes
-        Auth::loginUsingId(1);
-
         return view('tasks.index');
     }
 }
