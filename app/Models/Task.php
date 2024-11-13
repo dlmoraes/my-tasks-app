@@ -29,6 +29,7 @@ class Task extends Model
     {
         return [
             "companies" => "array",
+            "created_at" => "datetime",
             "ends_at" => "datetime",
             "closed_on" => "datetime",
             "status" => TaskStatus::class,
