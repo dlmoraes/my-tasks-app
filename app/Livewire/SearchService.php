@@ -12,7 +12,7 @@ class SearchService extends Component
 
     public function loadServices()
     {
-        if (strlen($this->search) > 2) {
+        if (strlen($this->search) > 2 && $this->search != '') {
             sleep(1);
             $this->services = (new ServiceService())->getServices($this->search);
         }
