@@ -1,5 +1,5 @@
 @props(['task'])
-<li
+<li wire:click="setSTaskSelected({{ $task->id }})"
     class="card-task p-1 rounded-2xl group flex justify-between w-[18.75rem] h-[12rem]  items-center cursor-pointer hover:scale-105 transition-all duration-300 ease-linear">
     <div class="w-full h-full border border-dashed shadow card bg-base-100 border-slate-700 shadow-slate-700">
         <div class="card-body">
