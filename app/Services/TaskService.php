@@ -23,4 +23,9 @@ class TaskService
             })
             ->get();
     }
+
+    function byId(int $taskId)
+    {
+        return Task::find($taskId);
+    }
 }
