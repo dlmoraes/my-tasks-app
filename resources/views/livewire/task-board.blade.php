@@ -55,4 +55,10 @@
 
         </div>
     </div>
+
+    <x-ui.modal>
+        @if ($this->taskSelected)
+            <h1>{{ $this->taskSelected->title }}</h1>
+        @endif
+    </x-ui.modal>
 </div>
