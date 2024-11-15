@@ -16,7 +16,7 @@
             <ul id="group-items-1" class="flex flex-col gap-6">
                 @foreach ($this->tasks as $task)
                     @if ($task->status->value == 'open')
-                        <x-ui.tasks.card :task="$task" />
+                        <livewire:task-card :task="$task" />
                     @endif
                 @endforeach
             </ul>
@@ -55,10 +55,4 @@
 
         </div>
     </div>
-
-    <x-ui.modal>
-        @if ($this->taskSelected)
-            <h1>{{ $this->taskSelected->title }}</h1>
-        @endif
-    </x-ui.modal>
 </div>

@@ -10,9 +10,6 @@ class TaskBoard extends Component
 {
 
     public $tasks = [];
-    public $taskSelectedId;
-    public $taskSelected;
-    public $modal = false;
 
     public function mount()
     {
@@ -23,13 +20,6 @@ class TaskBoard extends Component
         }
 
         $this->tasks = (new TaskService())->myTasks($authUser->id);
-    }
-
-    public function setSTaskSelected($taskId)
-    {
-        $this->taskSelectedId = $taskId;
-        $this->taskSelected = (new TaskService())->byId($taskId);
-        $this->modal = true;
     }
 
     public function render()

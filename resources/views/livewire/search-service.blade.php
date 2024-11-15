@@ -10,7 +10,6 @@
         </label>
     </div>
 
-
     <div class="flex justify-center">
         <div wire:loading class="loader-animate">
         </div>

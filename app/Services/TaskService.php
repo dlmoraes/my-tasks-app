@@ -13,7 +13,7 @@ class TaskService
     function myTasks(int $authUserId)
     {
         return Task::join('services', 'tasks.service_id', '=', 'services.id')
-            ->select('tasks.id', 'tasks.title', 'tasks.description', 'tasks.status', 'tasks.created_at', 'services.name as service_name')
+            ->select('tasks.*', 'services.name as service_name')
             ->where('tasks.user_id', $authUserId)
             ->orWhereExists(function (Builder $query) use ($authUserId) {
                 $query->select(DB::raw(1))

@@ -228,7 +228,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
+    @apply bg-stratos-700;
 }
 
 .card-task {
@@ -237,13 +237,21 @@
 }
 
 .card-task:hover::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     left: -50%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, transparent, transparent, #145A86, #0D1967, #17299F, #1D33C3);
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent,
+        #145a86,
+        #0d1967,
+        #17299f,
+        #1d33c3
+    );
     z-index: 0;
     transform-origin: bottom right;
     animation: cardanimate 6s linear infinite;
