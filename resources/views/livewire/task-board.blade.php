@@ -14,9 +14,9 @@
                 </button>
             </header>
             <ul id="group-items-1" class="flex flex-col gap-6">
-                @foreach ($this->tasks as $task)
-                    @if ($task->status->value == 'open')
-                        <livewire:task-card :task="$task" />
+                @foreach ($this->tasks as $item)
+                    @if ($item->status == 'open')
+                        <x-tasks.card wire:click='selectedTask({{ $item->id }})' :task="$item" />
                     @endif
                 @endforeach
             </ul>
@@ -30,9 +30,9 @@
                 </button>
             </header>
             <ul id="group-items-2" class="flex flex-col gap-6">
-                @foreach ($this->tasks as $task)
-                    @if ($task->status->value == 'in-progress')
-                        <x-ui.tasks.card :task="$task" />
+                @foreach ($this->tasks as $item)
+                    @if ($item->status == 'in-progress')
+                        <x-tasks.card :task="$item" />
                     @endif
                 @endforeach
             </ul>
@@ -46,13 +46,19 @@
                 </button>
             </header>
             <ul id="group-items-3" class="flex flex-col gap-6">
-                @foreach ($this->tasks as $task)
-                    @if ($task->status->value == 'closed')
-                        <x-ui.tasks.card :task="$task" />
+                @foreach ($this->tasks as $item)
+                    @if ($item->status == 'closed')
+                        <x-tasks.card :task="$item" />
                     @endif
                 @endforeach
             </ul>
 
         </div>
     </div>
+
+
+
+    @if ($this->taskSelected)
+        <x-tasks.modal :task="$this->taskSelected" />
+    @endif
 </div>
