@@ -11,18 +11,6 @@ class TaskService
 
     function myTasks(int $authUserId)
     {
-        // return Task::join('services', 'tasks.service_id', '=', 'services.id')
-        //     ->select('tasks.id', 'tasks.title', 'tasks.created_at', 'tasks.description', 'tasks.status', 'services.name as service_name')
-        //     ->where('tasks.user_id', $authUserId)
-        //     ->orWhereExists(function (Builder $query) use ($authUserId) {
-        //         $query->select(DB::raw(1))
-        //             ->from('services as s1')
-        //             ->where('s1.user_id', $authUserId)
-        //             ->whereColumn('s1.id', 'tasks.service_id');
-        //     })
-        //     ->get();
-
-
         return DB::table('tasks')
             ->join('services', 'tasks.service_id', '=', 'services.id')
             ->select('tasks.id', 'tasks.title', 'tasks.created_at', 'tasks.description', 'tasks.status', 'services.name as service_name')
@@ -40,7 +28,9 @@ class TaskService
     {
         return DB::table('tasks')
             ->join('services', 'tasks.service_id', '=', 'services.id')
-            ->select('tasks.*', 'services.name as service_name')
+            ->join('users', 'tasks.user_id', '=', 'users.id')
+            ->join('users as u1', 'services.user_id', '=', 'u1.id')
+            ->select('tasks.*', 'services.name as service_name', 'users.name as created_by', 'u1.name as responsible_by_service')
             ->where('tasks.id', $taskId)
             ->first();
     }
