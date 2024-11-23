@@ -30,7 +30,7 @@ class TaskService
             ->join('services', 'tasks.service_id', '=', 'services.id')
             ->join('users', 'tasks.user_id', '=', 'users.id')
             ->join('users as u1', 'services.user_id', '=', 'u1.id')
-            ->select('tasks.*', 'services.name as service_name', 'users.name as created_by', 'u1.name as responsible_by_service')
+            ->select('tasks.*', 'services.name as service_name', 'users.name as created_by', 'services.user_id as responsible_by_id', 'u1.name as responsible_by_service')
             ->where('tasks.id', $taskId)
             ->first();
     }

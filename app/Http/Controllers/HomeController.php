@@ -10,10 +10,6 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        if (!Auth::check()) {
-            Auth::loginUsingId(1);
-        }
-
         return view("home");
     }
 }

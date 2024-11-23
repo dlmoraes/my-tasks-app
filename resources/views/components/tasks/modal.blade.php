@@ -5,22 +5,26 @@
             <div class="flex flex-col items-center w-full gap-6 -mt-3">
                 <h1 class="text-slate-300">Ações</h1>
                 <div class="flex flex-col items-center w-full gap-6">
-                    <button type="button" class="btn btn-outline btn-sm">
-                        <i class="ri-pencil-line"></i>
-                        Editar
-                    </button>
-                    <button type="button" class="btn btn-outline btn-sm">
-                        <i class="ri-attachment-line"></i>
-                        Anexar
-                    </button>
-                    <button type="button" class="btn btn-outline btn-sm">
-                        <i class="ri-calendar-schedule-line"></i>
-                        Prazos
-                    </button>
-                    <button type="button" class="btn btn-outline btn-sm">
-                        <i class="ri-play-line"></i>
-                        Iniciar
-                    </button>
+                    @if (Auth::user()->id == $task->user_id)
+                        <button type="button" class="btn btn-outline btn-sm">
+                            <i class="ri-pencil-line"></i>
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm">
+                            <i class="ri-attachment-line"></i>
+                            Anexar
+                        </button>
+                    @endif
+                    @if (Auth::user()->id == $task->responsible_by_id)
+                        <button type="button" class="btn btn-outline btn-sm">
+                            <i class="ri-calendar-schedule-line"></i>
+                            Prazos
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm">
+                            <i class="ri-play-line"></i>
+                            Iniciar
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

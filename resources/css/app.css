@@ -266,7 +266,6 @@
     }
 }
 
-
 .task-actions-modal {
     @apply absolute top-14 -left-[7.8rem] h-full w-32 z-10;
 }
@@ -279,12 +278,39 @@
     top: -3.5rem;
     width: 100%;
     height: 100%;
-    background: #070B14;
+    background: #070b14;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     border: 1px dashed #1e293b;
-    -webkit-box-shadow: 5px 0px 8px 0px rgba(0,0,0,0.3);
-    -moz-box-shadow: 5px 0px 8px 0px rgba(0,0,0,0.3);
-    box-shadow: 5px 0px 8px 0px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 5px 0px 8px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 5px 0px 8px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 0px 8px 0px rgba(0, 0, 0, 0.3);
 }
 
+.bolhas {
+    @apply absolute flex;
+}
+
+.bolhas span {
+    width: 30px;
+    height: 30px;
+    background: #e5ff00;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #e5ff0044, 0 0 50px #e5ff00, 0 0 100px #e5ff00;
+    animation: loginanimate calc(30s / var(--i)) linear infinite;
+}
+
+.bolhas span:nth-of-type(even) {
+    background-color: #2dc3ff;
+    box-shadow: 0 0 0 10px #2dc3ff44, 0 0 50px #2dc3ff, 0 0 100px #2dc3ff;
+}
+
+@keyframes loginanimate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
